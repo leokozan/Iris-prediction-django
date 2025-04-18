@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <button onclick="window.location.href = '/iris/create/'">novo registro</button>
+        {% for x in data_set %}
+            <div>
+                <span>{{ x.id }}</span>
+                <span>{{ x.sepal_width }}</span>
+                <span>{{ x.sepal_length }}</span>
+                <span>{{ x.petal_width }}</span>
+                <span>{{ x.petal_length }}</span>
+                <span>{{ x.specie }}</span>
+                <button onclick="window.location.href = '/iris/{{ x.id }}/'">editar</button>
+            </div>
+        {% endfor %}
+    </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <form method="post">
+            {% csrf_token %}
+            <div>
+                <label for="sepal_length">sepal length</label>
+                <input type="number" id="sepal_length" name="sepal_length" />
+            </div>
+            <div>
+                <label for="sepal_width">sepal width</label>
+                <input type="number" id="sepal_width" name="sepal_width" />
+            </div>
+            <div>
+                <label for="petal_length">petal length</label>
+                <input type="number" id="petal_length" name="petal_length" />
+            </div>
+            <div>
+                <label for="petal_width">sepal width</label>
+                <input type="number" id="petal_width" name="petal_width" />
+            </div>
+
+            <div>
+                <label for="petal_width">specie</label>
+                <select name="specie" id="specie">
+                    <option value="" selected hidden disabled>Selecione uma especie</option>
+                    <option value="setosa">setosa</option>
+                    <option value="versicolor">versicolor</option>
+                    <option value="virginica">virginica</option>
+                </select>
+            </div>
+
+            <div>
+                <input type="submit" value="Salvar" />
+                <input type="button" value="voltar" onclick="window.location.href = '/iris/'" />
+            </div>
+        </form>
+    </body>
+</html>
