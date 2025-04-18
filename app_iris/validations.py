@@ -30,7 +30,7 @@ class IrisValidations:
         self.__petal_width = petal_width
 
     def set_specie(self, specie):
-        if not specie in ['setosa', 'versicolor', 'virginica']:
+        if specie not in ['setosa', 'versicolor', 'virginica']:
             raise ValueError(f'specie deve ser setosa, versicolor ou virginica ({specie}).')
         self.__specie = specie
 
@@ -42,3 +42,23 @@ class IrisValidations:
         iris.petal_width = self.__petal_width
         iris.specie = self.__specie
         return iris
+
+    @property
+    def sepal_length(self):
+        return self.__sepal_length
+
+    @property
+    def sepal_width(self):
+        return self.__sepal_width
+
+    @property
+    def petal_length(self):
+        return self.__petal_length
+
+    @property
+    def petal_width(self):
+        return self.__petal_width
+
+    @property
+    def specie(self):
+        return self.__specie

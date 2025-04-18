@@ -1,5 +1,5 @@
 from django.views import View
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from app_iris.models import IrisModel
 from app_iris.validations import IrisValidations
 import traceback
@@ -39,10 +39,26 @@ class IrisUpdateView(View):
             'species': ['setosa', 'versicolor', 'virginica']
         }
         return render(request, 'app_iris/update.html', context)
-    
     def post(self, request, id):
-        # implementar aqui
-        ...
+        try:
+            iris = IrisValidations()
+            iris.set_sepal_length(float(request.POST.get('sepal_length')))
+            iris.set_sepal_width(float(request.POST.get('sepal_width')))
+            iris.set_petal_length(float(request.POST.get('petal_length')))
+            iris.set_petal_width(float(request.POST.get('petal_width')))
+            iris.set_specie(request.POST.get('specie'))
+
+            model = IrisModel.objects.get(id=int(id))
+            model.sepal_length = iris.sepal_length
+            model.sepal_width = iris.sepal_width
+            model.petal_length = iris.petal_length
+            model.petal_width = iris.petal_width
+            model.specie = iris.specie
+            model.save()
+        except Exception as e:
+            traceback.print_exc()
+
+        return redirect('iris_list')
 
 class IrisDashboardView(View):
     def get(self, request):
